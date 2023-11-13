@@ -1,9 +1,11 @@
 'use client';
 
-export default function Menu() {
+export default function Menu(props: any) {
   return (
     <div>
-      <h1>Menu</h1>
+      {props.name}
+      {props.age}
+      {props.isMan}
     </div>
   )
 }
