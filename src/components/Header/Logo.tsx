@@ -1,9 +1,9 @@
 'use client';
 
+import { FiCast } from "react-icons/fi";
+
 export default function Logo() {
   return (
-    <div>
-      <h1>Logo</h1>
-    </div>
+    <FiCast />
   )
 }
