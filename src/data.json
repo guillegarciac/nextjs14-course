@@ -1,0 +1,13 @@
+[
+  {
+    "name": "Bulbasaur",
+    "type": "Grass",
+    "id": 1
+  },
+  {
+    "name": "Ivysaur",
+    "type": "Grass",
+    "id": 2
+  }
+
+]
