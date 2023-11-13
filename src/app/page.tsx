@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { userService } from "../app/services/userService"; 
 
 import Header from "@/components/Header";
 import Logo from "@/components/Header/Logo";
@@ -11,41 +12,26 @@ import vercel from "../../public/vercel.svg";
 export default function Home() {
   const name = "world";
   const [loading, setLoading] = useState(false);
-  const fetchUsers = async () => {
+
+  const handleFetchUsers = async () => {
     try {
       setLoading(true);
-      const response = await fetch("/api/users", {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-        },
-      });
-      if (response) {
-        const data = await response.json();
-        console.log(data);
-      }
+      const data = await userService.fetchUsers();
+      console.log(data);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     } finally {
       setLoading(false);
     }
   };
 
-  const fetchHello = async () => {
+  const handleFetchHello = async () => {
     try {
       setLoading(true);
-      const response = await fetch("/api", {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-        },
-      });
-      if (response) {
-        const data = await response.json();
-        console.log(data);
-      }
+      const data = await userService.fetchHello();
+      console.log(data);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     } finally {
       setLoading(false);
     }
@@ -59,20 +45,22 @@ export default function Home() {
       </Header>
       <button
         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-        onClick={fetchUsers}
+        onClick={handleFetchUsers}
+        disabled={loading}
       >
-        Fetch All Users
+        {loading ? 'Loading...' : 'Fetch All Users'}
       </button>
       <button
         className="bg-blue-300 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded"
-        onClick={fetchHello}
+        onClick={handleFetchHello}
+        disabled={loading}
       >
-        Fetch Hello World
+        {loading ? 'Loading...' : 'Fetch Hello World'}
       </button>
       <p>hello world from docker container</p>
-      <div /* className="w-[800px]" */>
-        <Image quality={100} src={background} alt="Background Logo" />
-        <Image src={vercel} width={360} height={360} alt="vercel Logo" />
+      <div>
+        <Image quality={100} src={background} alt="Background" layout="responsive" />
+        <Image src={vercel} width={360} height={360} alt="Vercel Logo" />
       </div>
     </main>
   );
