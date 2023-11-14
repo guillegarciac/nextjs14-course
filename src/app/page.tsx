@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { userService } from "../app/services/userService"; 
+import { userService } from "../app/services/userService";
 
 import Header from "@/components/Header";
 import Logo from "@/components/Header/Logo";
