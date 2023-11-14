@@ -59,8 +59,8 @@ export default function Home() {
       </button>
       <p>hello world from docker container</p>
       <div>
-        <Image quality={100} src={background} alt="Background" layout="responsive" />
-        <Image src={vercel} width={360} height={360} alt="Vercel Logo" />
+        <Image quality={100} src={background} alt="Background" priority />
+        {/* <Image src={vercel} width={360} height={360} alt="Vercel Logo" /> */}
       </div>
     </main>
   );
